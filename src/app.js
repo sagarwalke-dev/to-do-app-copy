@@ -4,7 +4,6 @@ const path=require('path');
 const task=require('./task');
 const bodyParser=require('body-parser');
 const app=express();
-require('dotenv').config();
 
 //setup satic middelware
 app.use(express.static(path.join(__dirname,'../public')));
@@ -99,8 +98,10 @@ app.get('/completedTask',function(req,res){
 
 //Handle 404 error here
 app.get('*',function(req,res){
+    console.log('404 not found');
     res.redirect('/error.html');
 });
+
 //config port for express server 
 app.listen(process.env.PORT || 3000,()=>{
     console.log('server started...');
