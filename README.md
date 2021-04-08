@@ -8,7 +8,7 @@ TO-DO application with node js
    b. replace line number 7 with your DB connection url.
 3. npm install
 4. npm start
-5. http://localhost:27017/ hit url in browser
+5. http://localhost:3000/ hit url in browser
 
 feel free to contribute.
 # Thanks!
