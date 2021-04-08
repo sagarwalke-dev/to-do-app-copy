@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tasks</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script> 
+    $(function(){
+      $("#header").load("header.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script> 
+    <!-- header -->
+    <div id="header"></div>
+    <center>
+<body >
+    <h2>All Tasks</h2>
+        <% if(tasks.length>0){ %>
+            <table>
+                <tr>
+                <th>Task ID</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Task Date</th>
+                <th>Task Time</th>
+                <th>Task status</th>
+                <th>Action</th>
+                </tr>
+                <% tasks.forEach(function(task){
+                    var date=new Date(task.taskDate).toISOString().slice(0,10);
+                    var time=new Date(task.taskDate).toLocaleTimeString('it-IT');
+                    %>
+                    <tr>
+                        <td><%= task.taskId %></td>
+                        <td><%= task.taskName %></td>
+                        <td><%= task.taskDesc %></td>
+                        <td style="width: 100px;"><%= date %></td>
+                        <td><%= time %></td>
+                        
+                        <% if(task.taskStatus){ %>
+                        <td style="background-color: rgb(117, 255, 117)" >Completed</td>
+                        <% }else{ %>
+                        <td style="background-color: rgb(255, 117, 124)" >Pending</td>
+                        <%}%>
+                        
+                        <td style="width: 150px;">
+                            <a href='/editTask?id=<%= task.taskId %>'> <i class="fa fa-pencil-square-o" style='color:blueviolet' aria-hidden="true"></i>Edit</a>
+                            <b>|</b> <a href='/deleteTask?id=<%= task.taskId  %>'><i class="fa fa-trash" style='color: red;' aria-hidden="true"></i>Delete</a>            
+                        </td>
+
+                    </tr>
+                <% }); %>
+            </table>
+            <% } else { %> 
+            <h2>No task exists</h2>
+            <% } %>
+</body>
+</center>
+<!-- footer -->
+<div id="footer"></div>
+</html>

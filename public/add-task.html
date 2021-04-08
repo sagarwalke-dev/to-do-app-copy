@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script> 
+    $(function(){
+      $("#header").load("header.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script> 
+    <!-- header -->
+    <div id="header"></div>
+    <center>
+        <style>
+            input{
+                height: 30px;
+		width: 300px;
+		text-align: center;
+		font-size: large;
+		border:none;
+		border-radius: 6px;
+            }
+        </style>
+<body >
+    <h2>Add Task</h2>
+    
+        <form action="/addTask" method="POST" id="taskfrm">
+            <table>
+
+                <tr>
+                    <td>
+                        <label> Id </label>
+                    </td>
+                    <td>
+                        <input type="tel" name="id" placeholder="Task Id">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label> Name </label>
+                    </td>
+                    <td>
+                        <input type="text" name="task" placeholder="Task Name">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label> Description </label>
+                    </td>
+                    <td>
+                        <textarea type="text" name="desc" placeholder="Task Description"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label> Date </label>
+                    </td>
+                    <td>
+                        <input type="datetime-local" name="date" placeholder="Task Date"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" form="taskfrm"> Add Task</button>
+        </form>
+        
+</body>
+</center>
+<!-- footer -->
+<div id="footer"></div>
+</html>

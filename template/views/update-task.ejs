@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+    });
+</script>
+<!-- header -->
+<div id="header"></div>
+<style>
+    .id,.name{
+        height: 30px;
+		width: 300px;
+		text-align: center;
+		font-size: large;
+		border: none;
+		border-radius: 6px;
+    }
+</style>
+<center>
+
+    <body style="text-align: center;">
+        <h2>Update Task</h2>
+
+        <form action="/updateTask" method="POST" id="taskfrm">
+            <table>
+                <% if(task.length>0){
+                    task.forEach(function(t){
+                    %>
+                    <tr>
+                        <td><label>Task Id</label></td>
+                        <td><input class="id" type="tel" name="id" value="<%=t.taskId%>" readonly></td>
+                    </tr>
+                    <tr>
+                        <td><label>Task Name</label></td>
+                        <td><input class="name" type="text" name="name" value="<%=t.taskName%>" readonly></td>
+                    </tr>
+                    <tr>
+                        <td><label>Task Status</label></td>
+                        <td>
+                            <input type="radio" name="status" value="true" <% if(t.taskStatus) {%> checked <%}%> >Completed
+                            <input type="radio" name="status" value="false" <% if(!t.taskStatus){ %> checked <%}%> >Pending
+                        </td>
+                    </tr>
+
+
+                    <% }) } %>
+
+            </table>
+
+
+            <button type="submit" form="taskfrm"> Update Task</button>
+        </form>
+
+    </body>
+</center>
+<!-- footer -->
+<div id="footer"></div>
+
+</html>
